@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<!-- Обновленная версия для LinqKit для EF Core 6.x.x -->
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
 		<PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="6.0.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
