@@ -1,0 +1,5 @@
+logs/
+venv/
+app/__pycache__/
+.env
+*.txt
