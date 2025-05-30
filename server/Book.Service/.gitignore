@@ -1,0 +1,21 @@
+# Build output directories
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Migrations folder
+Migrations/
+
+# SQLite database file 
+*.db
+
+# NuGet packages
+packages/
+
+appsettings.json
