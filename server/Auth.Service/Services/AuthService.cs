@@ -329,6 +329,24 @@ public class AuthService
     }
 
 
+    public async Task<UserResponseDto?> GetUser(Guid id)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+        if (user == null)
+            return null;
+
+        return new UserResponseDto
+        {
+            Id = user.Id,
+            Username = user.Username,
+            Email = user.Email,
+            IsAdmin = user.IsAdmin,
+            IsSuperUser = user.IsSuperUser
+        };
+    }
+
+
     public async Task<(bool Success, AuthResponseDto? Response)> RefreshToken(RefreshTokenDto dto)
     {
         // Проверяем, не в бане ли access token
@@ -370,5 +388,8 @@ public class AuthService
             ExpiresAt = DateTime.UtcNow.AddMinutes(int.Parse(_config["JwtSettings:AccessExpirationMinutes"]))
         });
     }
+
+
+
 
 }

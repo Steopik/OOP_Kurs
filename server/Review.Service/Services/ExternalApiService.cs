@@ -21,7 +21,7 @@ public class ExternalApiService
     public async Task<bool> UserExists(Guid userId)
     {
         var client = _httpClientFactory.CreateClient("AuthClient");
-        var response = await client.GetAsync($"/user/{userId}");
+        var response = await client.GetAsync($"/Auth/{userId}");
         return response.IsSuccessStatusCode;
     }
 

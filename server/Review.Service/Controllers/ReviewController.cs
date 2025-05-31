@@ -70,7 +70,7 @@ public class ReviewController : ControllerBase
             return BadRequest("UserId не указан");
 
         var isAdmin = await IsUserAdmin(userId);
-        var success = await _reviewService.DeleteReview(id, userId, isAdmin);
+        var success = await _reviewService.DeleteReview(id, userId);
 
         return success
             ? Ok($"Отзыв {id} удалён")

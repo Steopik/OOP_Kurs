@@ -63,13 +63,10 @@ public class ReviewService
         await _context.Reviews.FindAsync(id);
 
 
-    public async Task<bool> DeleteReview(Guid id, Guid userId, bool isUserAdmin)
+    public async Task<bool> DeleteReview(Guid id, Guid userId)
     {
         var review = await _context.Reviews.FindAsync(id);
-        if (review == null) return false;
-
-        // Проверяем права
-        if (review.UserId != userId && !isUserAdmin)
+        if (review == null || review.UserId != userId)
             return false;
 
         _context.Reviews.Remove(review);

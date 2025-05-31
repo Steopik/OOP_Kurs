@@ -21,7 +21,7 @@ public class ExternalApiService
     public async Task<bool> UserExists(Guid userId)
     {
         var client = _httpClientFactory.CreateClient();
-        var url = $"{GetAuthServiceUrl()}/user/{userId}";
+        var url = $"{GetAuthServiceUrl()}/Auth/{userId}";
 
         var response = await client.GetAsync(url);
         return response.IsSuccessStatusCode;
@@ -41,7 +41,7 @@ public class ExternalApiService
     public async Task<bool> IsUserAdmin(Guid userId)
     {
         var client = _httpClientFactory.CreateClient();
-        var url = $"{GetAuthServiceUrl()}/user/{userId}";
+        var url = $"{GetAuthServiceUrl()}/Auth/{userId}";
 
         var response = await client.GetAsync(url);
         if (!response.IsSuccessStatusCode) return false;

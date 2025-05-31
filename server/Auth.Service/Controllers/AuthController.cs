@@ -121,6 +121,19 @@ public class AuthController : ControllerBase
         }
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetUser(Guid id)
+    {
+        try
+        {
+            var userDto = await _authService.GetUser(id);
 
-  
+            return userDto != null ? Ok(userDto) : NotFound("Пользователь не найден");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
 }

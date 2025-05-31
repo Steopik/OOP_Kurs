@@ -4,8 +4,11 @@ using ReadingProgress.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var urls = builder.Configuration["Urls:ThisService"];
+builder.WebHost.UseUrls(urls);
 // ===== Регистрация сервисов =====
 builder.Services.AddControllers();
+
 
 // EF Core + SQLite
 builder.Services.AddDbContext<ProgressDbContext>(options =>
