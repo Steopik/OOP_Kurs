@@ -346,6 +346,15 @@ public class AuthService
         };
     }
 
+    public async Task<Guid?> GetUserByName(string name)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == name);
+
+        if (user == null)
+            return null;
+
+        return user.Id;
+    }
 
     public async Task<(bool Success, AuthResponseDto? Response)> RefreshToken(RefreshTokenDto dto)
     {

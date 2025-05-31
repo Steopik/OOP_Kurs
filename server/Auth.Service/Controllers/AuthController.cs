@@ -136,4 +136,20 @@ public class AuthController : ControllerBase
         }
     }
 
+
+    [HttpGet("user/{name}")]
+    public async Task<IActionResult> GetUserByName(string name)
+    {
+        try
+        {
+            var userDto = await _authService.GetUserByName(name);
+
+            return userDto != null ? Ok(userDto) : NotFound("Пользователь не найден");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
 }
